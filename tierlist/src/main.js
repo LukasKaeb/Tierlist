@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import axios from 'axios'
+
 import { initializeApp } from "firebase/app";
 
 
@@ -15,7 +15,6 @@ const firebaseConfig = {
     appId: "1:462352111982:web:657d8afd7c6b943782897f"
   };
 
-  // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 createApp(App).use(router).mount('#app')
