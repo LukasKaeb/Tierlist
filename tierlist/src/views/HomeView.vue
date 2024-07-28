@@ -29,11 +29,12 @@ img{
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 .login-button{
-  display: inline-block;
-  width: 80px;
-  height: 40px;
-  background: transparent;
-  border-radius: 5px;
-  cursor: pointer;
+  height: 50px;
+  width: 125px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 50px;
+  background: #ac44f6;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 </style>
