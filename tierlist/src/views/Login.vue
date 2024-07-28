@@ -1,5 +1,6 @@
 <template>
     <h1>Sign In To An Account</h1>
+    <p>If you don't have an account please register <a href="/register"> here.</a></p>
     <p><input type="text" placeholder="Email" v-model="email"></p>
     <p><input type="password" placeholder="Password" v-model="password"></p>
     <p v-if="errMsg">{{ errMsg }}</p>
