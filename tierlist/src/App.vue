@@ -1,11 +1,11 @@
 <template>
   <div class="backdrop">
     <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/tierlist">Create Tierlist</router-link> |
-    <router-link to="/login">Login</router-link> |
+    <router-link to="/">Home</router-link>
+    <router-link to="/tierlist">Create Tierlist</router-link>
+    <router-link to="/login">Login</router-link>
     <router-link to="/register">Register</router-link>
-    <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
+    <button class="sign-out" @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
   </nav>
   </div>
   <router-view/>
@@ -40,6 +40,15 @@ const handleSignOut = () =>{
 </script>
 
 <style>
+.sign-out{
+  text-decoration: underline;
+  background: none;
+  color: #ac44f6;
+  height: 25px;
+  width: 25pxpx;
+  padding: 5px 10px;
+}
+
 .backdrop{
   backdrop-filter: blur();
   border-radius: 50px;
@@ -57,12 +66,14 @@ const handleSignOut = () =>{
 
 nav {
   padding: 30px;
+  padding-right: 30px;
 }
 
 nav a {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
+  padding: 10px;
 }
 
 nav a.router-link-exact-active {
