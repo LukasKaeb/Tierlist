@@ -4,7 +4,7 @@ import router from './router'
 import axios from 'axios'
 import { initializeApp } from "firebase/app";
 
-Vue.prototype.$axios = axios
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDjsMysbcywQcTPDX3f1xWNV7p-fM6K5Sk",
