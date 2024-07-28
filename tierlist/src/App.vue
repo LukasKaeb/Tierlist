@@ -41,12 +41,11 @@ const handleSignOut = () =>{
 
 <style>
 .backdrop{
-  background: white;
   backdrop-filter: blur();
   border-radius: 50px;
   margin: auto;
   width: 800px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: transparent;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

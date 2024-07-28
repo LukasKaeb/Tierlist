@@ -1,11 +1,11 @@
 <template>
     <h1>Sign In To An Account</h1>
-    <p>If you don't have an account please register <a href="/register"> here.</a></p>
     <p><input type="text" placeholder="Email" v-model="email"></p>
     <p><input type="password" placeholder="Password" v-model="password"></p>
     <p v-if="errMsg">{{ errMsg }}</p>
     <p><button @click="register">Submit</button></p>
     <p><button @click="signInWithGoogle">Sign In With Google</button></p>
+    <p>Don't have an account?<a href="/register"> Register here.</a></p>
   </template>
   
   <script setup>
@@ -29,7 +29,7 @@
           console.log(error.code)
           switch (error.code) {
             case "auth/invalid-email":
-                errMsg.value = "Invalid email"
+                errMsg.value = "Invalid email!"
                 break
             case "auth/user-not-found":
                 errMsg.value = "No account with that email was found"
@@ -52,5 +52,10 @@
   </script>
   
   <style>
-  
+  button{
+    cursor: pointer;
+  }
+  a{
+    text-decoration: none;
+  }
   </style>
