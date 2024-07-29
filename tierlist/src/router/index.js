@@ -58,7 +58,7 @@ router.beforeEach(async (to, from, next)=>{
       next()
     } else{
       alert("You dont have access! Please Login or Register first.")
-      next("/")
+      next("/register")
     }
 
   }else{
