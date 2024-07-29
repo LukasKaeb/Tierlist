@@ -1,11 +1,27 @@
 <template>
-    <h1>Sign In To An Account</h1>
-    <p><input type="text" placeholder="Email" v-model="email"></p>
-    <p><input type="password" placeholder="Password" v-model="password"></p>
+    <section>
+    <div class="form-box">
+        <div class="form-value">
+            <h2>Sign In To An Account</h2>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" placeholder="" v-model="email">
+                <label for="">Email</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" placeholder="" v-model="password">
+                <label for="">Password</label>
+            </div>
     <p v-if="errMsg">{{ errMsg }}</p>
-    <p><button @click="register">Submit</button></p>
-    <p><button @click="signInWithGoogle">Sign In With Google</button></p>
-    <p>Don't have an account?<a href="/register"> Register here.</a></p>
+    <button @click="register">Submit</button>
+    <button @click="signInWithGoogle">Sign In With Google</button>
+    <div class="register">
+        <p>Don't have an account?<a href="/register"> Register here.</a></p>
+    </div>
+        </div>
+    </div>
+</section>
   </template>
   
   <script setup>
@@ -60,10 +76,10 @@
   </script>
   
   <style>
-  button{
+  /* button{
     cursor: pointer;
   }
   a{
     text-decoration: none;
-  }
+  } */
   </style>

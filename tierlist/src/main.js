@@ -4,6 +4,7 @@ import router from './router'
 
 import { initializeApp } from "firebase/app";
 
+import "/src/assets/global.css"
 
 
 const firebaseConfig = {

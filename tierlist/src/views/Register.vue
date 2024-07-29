@@ -1,11 +1,23 @@
 <template>
-<div class="register-form">
-    <h1>Create an Account</h1>
-    <p><input type="text" placeholder="Email" v-model="email"></p>
-    <p><input type="password" placeholder="Password" v-model="password"></p>
-    <p class="register"><button @click="register">Register</button></p>
-    <p class="google"><button @click="signInWithGoogle">Sign In With Google</button></p>
+    <section>
+<div class="form-box">
+    <div class="form-value">
+        <h2>Create an Account</h2>
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" placeholder="" v-model="email">
+                <label for="">Email</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" placeholder="" v-model="password">
+                <label for="">Password</label>
+        </div>
+            <button @click="register">Register</button>
+            <button @click="signInWithGoogle">Sign In With Google</button>  
+    </div>
 </div>
+</section>
 </template>
 
 <script setup>
@@ -45,7 +57,7 @@ const signInWithGoogle = () => {
 </script>
 
 <style>
-
+/* 
 
 button{
     height: 50px;
@@ -68,7 +80,7 @@ input{
     
 
 }
-.register-form{
+.form-box{
     border: none;
     padding: 25px 5px;
     border-radius: 50px;
@@ -77,5 +89,5 @@ input{
     backdrop-filter: blur();
     background: transparent;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
+} */
 </style>
