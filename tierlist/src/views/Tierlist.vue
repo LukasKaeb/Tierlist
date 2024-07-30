@@ -18,18 +18,26 @@
                 </div>
             </span>
             <div class="row-buttons">
-              <input type="button" value="+" title="Add row above" @click=""> 
-              <input type="button" value="-" title="Remove row" @click=""> 
-              <input type="button" value="+" title="Add row below" @click=""> 
+              <input type="button" value="+" title="Add row above" > 
+              <input type="button" value="-" title="Remove row" > 
+              <input type="button" value="+" title="Add row below" > 
             </div>
         </div>
         <!-- A Tier -->
-        <div class="row droppable">
+        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(1)">
             <span class="header" style="background-color: rgb(240, 167, 49);">
                 <label for="input-tier-1">A</label>
                 <input id="input-tier-1" type="text">
             </span>
-            <span class="items"></span>
+            <span class="items">
+                <div
+                v-for="item in tiers[1].image"
+                :key="item.id"
+                class="item"
+                >
+                <img :src="item.src" alt="Image">
+                </div>
+            </span>
             <div class="row-buttons">
               <input type="button" value="+" title="Add row above"> 
               <input type="button" value="-" title="Remove row"> 
@@ -37,12 +45,20 @@
             </div>
         </div>
         <!-- B Tier -->
-        <div class="row droppable">
+        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(2)">
             <span class="header" style="background-color: rgb(244, 217, 91);">
                 <label for="input-tier-2">B</label>
                 <input id="input-tier-2" type="text">
             </span>
-            <span class="items"></span>
+            <span class="items">
+                <div
+                v-for="item in tiers[2].image"
+                :key="item.id"
+                class="item"
+                >
+                <img :src="item.src" alt="Image">
+                </div>
+            </span>
             <div class="row-buttons">
               <input type="button" value="+" title="Add row above"> 
               <input type="button" value="-" title="Remove row"> 
@@ -50,12 +66,20 @@
             </div>
         </div>
         <!-- C Tier -->
-        <div class="row droppable">
+        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(3)">
             <span class="header" style="background-color: rgb(102, 255, 10);">
                 <label for="input-tier-3">C</label>
                 <input id="input-tier-3" type="text">
             </span>
-            <span class="items"></span>
+            <span class="items">
+                <div
+                v-for="item in tiers[3].image"
+                :key="item.id"
+                class="item"
+                >
+                <img :src="item.src" alt="Image">
+                </div>
+            </span>
             <div class="row-buttons">
               <input type="button" value="+" title="Add row above"> 
               <input type="button" value="-" title="Remove row"> 
@@ -63,12 +87,20 @@
             </div>
         </div>
         <!-- D Tier -->
-        <div class="row droppable">
+        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(4)">
             <span class="header" style="background-color: rgb(88, 200, 244);">
                 <label for="input-tier-4">D</label>
                 <input id="input-tier-4" type="text">
             </span>
-            <span class="items"></span>
+            <span class="items">
+                <div
+                v-for="item in tiers[4].image"
+                :key="item.id"
+                class="item"
+                >
+                <img :src="item.src" alt="Image">
+                </div>
+            </span>
             <div class="row-buttons">
               <input type="button" value="+" title="Add row above"> 
               <input type="button" value="-" title="Remove row"> 
@@ -76,12 +108,20 @@
             </div>
         </div>
         <!-- E Tier -->
-        <div class="row droppable">
+        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(5)">
             <span class="header" style="background-color: rgb(91, 118, 244);">
                 <label for="input-tier-5">E</label>
                 <input id="input-tier-5" type="text">
             </span>
-            <span class="items"></span>
+            <span class="items">
+                <div
+                v-for="item in tiers[5].image"
+                :key="item.id"
+                class="item"
+                >
+                <img :src="item.src" alt="Image">
+                </div>
+            </span>
             <div class="row-buttons">
               <input type="button" value="+" title="Add row above"> 
               <input type="button" value="-" title="Remove row"> 
@@ -89,12 +129,20 @@
             </div>
         </div>
         <!-- F Tier -->
-        <div class="row droppable">
+        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(6)">
             <span class="header" style="background-color: rgb(244, 91, 237);">
                 <label for="input-tier-6">F</label>
                 <input id="input-tier-6" type="text">
             </span>
-            <span class="items"></span>
+            <span class="items">
+                <div
+                v-for="item in tiers[6].image"
+                :key="item.id"
+                class="item"
+                >
+                <img :src="item.src" alt="Image">
+                </div>
+            </span>
             <div class="row-buttons">
               <input type="button" value="+" title="Add row above"> 
               <input type="button" value="-" title="Remove row"> 
@@ -173,7 +221,7 @@ const handleDrop = (tierIndex) => {
 
 <style>
 .main-content {
-    margin: 100px;
+    margin: 100px auto;
 }
 
 .upload-section{
@@ -186,32 +234,28 @@ const handleDrop = (tierIndex) => {
 
 .uploaded-img{
     display: inline-block;
-    align-content: left;
+    margin: 5px;
 }
 .uploaded-img img{
-    display: flex;
 	border: 1px solid #666;
 	height: 80px;
     width: 80px;
-	overflow-y: auto;
-	flex-wrap: wrap;
-	flex-grow: 1;
-	width: 100%;
-	align-content: flex-start;
+    object-fit: cover;
 }
 
 .upload-container {
-    margin: 0px 150px;
+    margin: 20px auto;
     border: 2px solid black;
     height: 320px;
     width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 10px;
 }
 
 .tierlist {
-    margin-top: -100px;
-    margin-bottom: -20px;
-    margin-left: 150px;
-    margin-right: 150px;
+margin: -100px 150px -20px;
 }
 
 .tierlist span {
@@ -232,6 +276,8 @@ const handleDrop = (tierIndex) => {
 	border-right-width: 1px;
 	display: flex;
 	user-select: none;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .tierlist div:last-child {
@@ -242,9 +288,15 @@ const handleDrop = (tierIndex) => {
 	background-color: #666;
 }
 
-span.header {
+.tierlist span.header {
+    display: flex;
     justify-content: center;
-    align-self: stretch;
+    align-items: center;
+    height: 50px;
+    font-size: 20px;
+    font-family: sans-serif;
+    border: 0;
+    background-color: rb(255, 102, 102);
     cursor: pointer;
 }
 span.header label{
@@ -262,13 +314,27 @@ span.items{
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
+    align-content: flex-start;
+    gap: 5px;
     justify-content: left;
     pointer-events: none;
     height: fit-content;
+    margin-top: 10px;
 }
 
 span.item{
     pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+span.item img {
+    border: 1px solid #666;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
 }
 
 .row-buttons {
