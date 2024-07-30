@@ -3,7 +3,7 @@
     <!-- Tierlist display -->
     <div class="tierlist">
         <!-- S Tier -->
-        <div class="row droppable">
+        <div class="row droppable" @dragenter.prevent @dragover.prevent>
             <span class="header" style="background-color: rgb(255, 102, 102);">
                 <label for="input-tier-0" type="text" style="display: inline;">S</label>
                 <input id="input-tier-0" type="text" style="display: none;">
@@ -101,7 +101,7 @@
             <input @change="handleFileUpload" type="file" multiple>
         </div>
         <div class="upload-container">
-            <div v-for="image in uploadedImages" :key="image.id" class="uploaded-img" draggable="true">
+            <div v-for="image in uploadedImages" :key="image.id" class="uploaded-img" >
                 <img :src="image.src" alt="Image">
             </div>
         </div>
@@ -122,6 +122,10 @@ const tiers = ref([
     {id: uuidv4(), name: 'E', image: [] },
     {id: uuidv4(), name: 'F', image: [] },
 ])
+
+//Handle dragging
+
+
 
 //intitialize uploaded images
 
