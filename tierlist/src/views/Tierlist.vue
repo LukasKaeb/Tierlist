@@ -3,16 +3,24 @@
     <!-- Tierlist display -->
     <div class="tierlist">
         <!-- S Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent>
+        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(0)">
             <span class="header" style="background-color: rgb(255, 102, 102);">
                 <label for="input-tier-0" type="text" style="display: inline;">S</label>
                 <input id="input-tier-0" type="text" style="display: none;">
             </span>
-            <span class="items"></span>
+            <span class="items">
+                <div
+                v-for="item in tiers[0].image"
+                :key="item.id"
+                class="item"
+                >
+                <img :src="item.src" alt="Image">
+                </div>
+            </span>
             <div class="row-buttons">
-              <input type="button" value="+" title="Add row above"> 
-              <input type="button" value="-" title="Remove row"> 
-              <input type="button" value="+" title="Add row below"> 
+              <input type="button" value="+" title="Add row above" @click=""> 
+              <input type="button" value="-" title="Remove row" @click=""> 
+              <input type="button" value="+" title="Add row below" @click=""> 
             </div>
         </div>
         <!-- A Tier -->
@@ -101,7 +109,7 @@
             <input @change="handleFileUpload" type="file" multiple>
         </div>
         <div class="upload-container">
-            <div v-for="image in uploadedImages" :key="image.id" class="uploaded-img" >
+            <div v-for="image in uploadedImages" :key="image.id" class="uploaded-img" draggable="true" @dragstart="handleDragStart(image)">
                 <img :src="image.src" alt="Image">
             </div>
         </div>
@@ -113,6 +121,7 @@ import { ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid'
 import { VueDraggableNext } from 'vue-draggable-next';
 
+//Initialize tiers
 const tiers = ref([
     {id: uuidv4(), name: 'S', image: [] },
     {id: uuidv4(), name: 'A', image: [] },
@@ -123,16 +132,13 @@ const tiers = ref([
     {id: uuidv4(), name: 'F', image: [] },
 ])
 
-//Handle dragging
-
-
-
 //intitialize uploaded images
-
 const uploadedImages = ref([])
 
-//Handle file uploads
+//Track the image being dragged
+const draggedImage = ref(null)
 
+//Handle file uploads
 const handleFileUpload = (event) => {
     const files = event.target.files
     if(files.length) {
@@ -149,21 +155,17 @@ const handleFileUpload = (event) => {
     }
 }
 
-//Handle file drops
+//Handle the start of dragging an image
+const handleDragStart = (image) => {
+    draggedImage.value = image
+}
 
-const handleFileDrop = (event) => {
-    const files = event.dataTransfer.files
-    if(files.length) {
-        Array.from(files).forEach((file) => {
-            const reader = new FileReader()
-            reader.onload = (e) => {
-                uploadedImages.value.push({
-                    id: uuidv4(),
-                    src: e.target.result
-                })
-            }
-            reader.readAsDataURL(file)
-        })
+//Handle dopping an image into a tier
+const handleDrop = (tierIndex) => {
+    if(draggedImage.value) {
+        tiers.value[tierIndex].image.push(draggedImage.value)
+        uploadedImages.value = uploadedImages.value.filter(img => img.id !== draggedImage.value.id)
+        draggedImage.value = null
     }
 }
 
@@ -282,6 +284,22 @@ span.item{
 	opacity: 1;
 	transition: 200ms linear;
 }
+  /* Style for tier containers */
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-
+.item {
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    margin: 3px;
+    display: inline-block;
+  }
+  
+  .item img {
+    width: 100%; /* Fit the image within the container */
+    height: 100%; /* Fit the image within the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
 </style>
