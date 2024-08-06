@@ -5,6 +5,7 @@ import router from './router'
 import { initializeApp } from "firebase/app";
 
 import "/src/assets/global.css"
+import './assets/tailwind.css'
 
 
 const firebaseConfig = {

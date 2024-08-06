@@ -1,173 +1,11 @@
 <template>
-  <div class="main-content">
-    <!-- Tierlist display -->
-    <div class="tierlist">
-        <!-- S Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(0)">
-            <span class="header" style="background-color: rgb(255, 102, 102);">
-                <label for="input-tier-0" type="text" style="display: inline;">S</label>
-                <input id="input-tier-0" type="text" style="display: none;">
-            </span>
-            <span class="items">
-                <div
-                v-for="item in tiers[0].image"
-                :key="item.id"
-                class="item"
-                >
-                <img :src="item.src" alt="Image">
-                </div>
-            </span>
-            <div class="row-buttons">
-              <input type="button" value="+" title="Add row above" > 
-              <input type="button" value="-" title="Remove row" > 
-              <input type="button" value="+" title="Add row below" > 
-            </div>
-        </div>
-        <!-- A Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(1)">
-            <span class="header" style="background-color: rgb(240, 167, 49);">
-                <label for="input-tier-1">A</label>
-                <input id="input-tier-1" type="text">
-            </span>
-            <span class="items">
-                <div
-                v-for="item in tiers[1].image"
-                :key="item.id"
-                class="item"
-                >
-                <img :src="item.src" alt="Image">
-                </div>
-            </span>
-            <div class="row-buttons">
-              <input type="button" value="+" title="Add row above"> 
-              <input type="button" value="-" title="Remove row"> 
-              <input type="button" value="+" title="Add row below"> 
-            </div>
-        </div>
-        <!-- B Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(2)">
-            <span class="header" style="background-color: rgb(244, 217, 91);">
-                <label for="input-tier-2">B</label>
-                <input id="input-tier-2" type="text">
-            </span>
-            <span class="items">
-                <div
-                v-for="item in tiers[2].image"
-                :key="item.id"
-                class="item"
-                >
-                <img :src="item.src" alt="Image">
-                </div>
-            </span>
-            <div class="row-buttons">
-              <input type="button" value="+" title="Add row above"> 
-              <input type="button" value="-" title="Remove row"> 
-              <input type="button" value="+" title="Add row below"> 
-            </div>
-        </div>
-        <!-- C Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(3)">
-            <span class="header" style="background-color: rgb(102, 255, 10);">
-                <label for="input-tier-3">C</label>
-                <input id="input-tier-3" type="text">
-            </span>
-            <span class="items">
-                <div
-                v-for="item in tiers[3].image"
-                :key="item.id"
-                class="item"
-                >
-                <img :src="item.src" alt="Image">
-                </div>
-            </span>
-            <div class="row-buttons">
-              <input type="button" value="+" title="Add row above"> 
-              <input type="button" value="-" title="Remove row"> 
-              <input type="button" value="+" title="Add row below"> 
-            </div>
-        </div>
-        <!-- D Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(4)">
-            <span class="header" style="background-color: rgb(88, 200, 244);">
-                <label for="input-tier-4">D</label>
-                <input id="input-tier-4" type="text">
-            </span>
-            <span class="items">
-                <div
-                v-for="item in tiers[4].image"
-                :key="item.id"
-                class="item"
-                >
-                <img :src="item.src" alt="Image">
-                </div>
-            </span>
-            <div class="row-buttons">
-              <input type="button" value="+" title="Add row above"> 
-              <input type="button" value="-" title="Remove row"> 
-              <input type="button" value="+" title="Add row below"> 
-            </div>
-        </div>
-        <!-- E Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(5)">
-            <span class="header" style="background-color: rgb(91, 118, 244);">
-                <label for="input-tier-5">E</label>
-                <input id="input-tier-5" type="text">
-            </span>
-            <span class="items">
-                <div
-                v-for="item in tiers[5].image"
-                :key="item.id"
-                class="item"
-                >
-                <img :src="item.src" alt="Image">
-                </div>
-            </span>
-            <div class="row-buttons">
-              <input type="button" value="+" title="Add row above"> 
-              <input type="button" value="-" title="Remove row"> 
-              <input type="button" value="+" title="Add row below"> 
-            </div>
-        </div>
-        <!-- F Tier -->
-        <div class="row droppable" @dragenter.prevent @dragover.prevent @drop="handleDrop(6)">
-            <span class="header" style="background-color: rgb(244, 91, 237);">
-                <label for="input-tier-6">F</label>
-                <input id="input-tier-6" type="text">
-            </span>
-            <span class="items">
-                <div
-                v-for="item in tiers[6].image"
-                :key="item.id"
-                class="item"
-                >
-                <img :src="item.src" alt="Image">
-                </div>
-            </span>
-            <div class="row-buttons">
-              <input type="button" value="+" title="Add row above"> 
-              <input type="button" value="-" title="Remove row"> 
-              <input type="button" value="+" title="Add row below"> 
-            </div>
-        </div>
-    </div>
-
-    
-    <!-- Upload section -->
-        <div class="upload-section">
-            <input @change="handleFileUpload" type="file" multiple>
-        </div>
-        <div class="upload-container">
-            <div v-for="image in uploadedImages" :key="image.id" class="uploaded-img" draggable="true" @dragstart="handleDragStart(image)">
-                <img :src="image.src" alt="Image">
-            </div>
-        </div>
-</div>
+  
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { v4 as uuidv4 } from 'uuid'
-import { VueDraggableNext } from 'vue-draggable-next';
+
 
 //Initialize tiers
 const tiers = ref([
@@ -203,19 +41,8 @@ const handleFileUpload = (event) => {
     }
 }
 
-//Handle the start of dragging an image
-const handleDragStart = (image) => {
-    draggedImage.value = image
-}
 
-//Handle dopping an image into a tier
-const handleDrop = (tierIndex) => {
-    if(draggedImage.value) {
-        tiers.value[tierIndex].image.push(draggedImage.value)
-        uploadedImages.value = uploadedImages.value.filter(img => img.id !== draggedImage.value.id)
-        draggedImage.value = null
-    }
-}
+
 
 </script>
 
