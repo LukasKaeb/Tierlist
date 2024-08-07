@@ -9,7 +9,7 @@ import './assets/tailwind.css'
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDjsMysbcywQcTPDX3f1xWNV7p-fM6K5Sk",
+    apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
     authDomain: "tierlist-maker-a088a.firebaseapp.com",
     projectId: "tierlist-maker-a088a",
     storageBucket: "tierlist-maker-a088a.appspot.com",
