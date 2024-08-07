@@ -3,7 +3,7 @@
     <h1>Create your own Tierlist</h1>
     <p>Please login or register to create a Tierlist</p>
   </div>
-  <button @click="redirect" class="login-button">Login</button>
+  <button @click="redirect" class="login-button bg-purple-800 text-white my-4">Login</button>
   <div>
     <img src="https://tiermaker.com/images/uploads/blobid1668114516863.png" alt="image">
   </div>
