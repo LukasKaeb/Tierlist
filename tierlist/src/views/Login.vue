@@ -14,8 +14,8 @@
                 <label for="">Password</label>
             </div>
     <p v-if="errMsg">{{ errMsg }}</p>
-    <button @click="register">Submit</button>
-    <button @click="signInWithGoogle">Sign In With Google</button>
+    <button @click="register" class="text-white bg-purple-800 mb-4">Submit</button>
+    <button @click="signInWithGoogle" class="text-white bg-purple-800">Sign In With Google</button>
     <div class="register">
         <p>Don't have an account?<a href="/register"> Register here.</a></p>
     </div>

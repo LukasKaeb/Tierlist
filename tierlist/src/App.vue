@@ -5,7 +5,7 @@
     <router-link to="/tierlist">Create Tierlist</router-link>
     <router-link to="/login">Login</router-link>
     <router-link to="/register">Register</router-link>
-    <button class="sign-out" @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
+    <button class="sign-out w-32 " @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
   </nav>
   </div>
   <router-view/>

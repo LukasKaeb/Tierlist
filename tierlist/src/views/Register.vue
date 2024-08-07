@@ -13,8 +13,8 @@
                 <input type="password" placeholder="" v-model="password">
                 <label for="">Password</label>
         </div>
-            <button @click="register">Register</button>
-            <button @click="signInWithGoogle">Sign In With Google</button>  
+            <button @click="register" class="text-white bg-purple-800 mb-4">Register</button>
+            <button @click="signInWithGoogle" class="text-white bg-purple-800">Sign In With Google</button>  
     </div>
 </div>
 </section>
